@@ -3,15 +3,11 @@ namespace ConsoleApp16
 
     class TataCar
     {
-        //Dependency
-        Engine _engine = new RevtronEngine(); //composition
-        //Engine _engine = new VericoreEngine();
-        //Engine _engine = new KrytoechEngine();
-        public void Ignite()
+        public void Ignite(Engine _engine)
         {
             _engine.Start();
         }
-        public void Halt()
+        public void Halt(Engine _engine)
         {
             _engine.Stop();
         }
@@ -65,10 +61,15 @@ namespace ConsoleApp16
         static void Main(string[] args)
         {
             TataCar _nexon = new TataCar();
-            _nexon.Ignite();
+            RevtronEngine _revtron = new RevtronEngine();
+            _nexon.Ignite(_revtron);
 
-            TataCar _harrier = new TataCar(); //Kryotech engine
+            TataCar _harrier = new TataCar();
+            KrytoechEngine _kryotech = new KrytoechEngine();
+            _harrier.Ignite(_kryotech);
 
-            TataCar _hexa = new TataCar();//vericore engine
+            TataCar _hexa = new TataCar();
+            VericoreEngine _vericore = new VericoreEngine();
+            _hexa.Ignite(_vericore);
         }
     }
